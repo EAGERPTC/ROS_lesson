@@ -1,0 +1,2 @@
+rham_description:rham_steering_control
+-DCATKIN_DEVEL_PREFIX=/home/skr/ROS_lesson/devel -DCMAKE_INSTALL_PREFIX=/home/skr/ROS_lesson/install -G Unix Makefiles

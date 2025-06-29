@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="rplidarA1">
+        <link name="laser_link">
+            <inertial>
+                <origin xyz="0.00149239831069729 0.000430205916664227 -0.0174246639655813" rpy="0 0 0" />
+                <mass value="0.129722713096946" />
+                <inertia ixx="4.39659525903753E-05" ixy="-1.12117402106385E-06" ixz="-1.45144638008786E-07" iyy="5.34581954301131E-05" iyz="-1.57444487872166E-07" izz="8.85145581368939E-05" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://rham_description/meshes/laser_link.STL" />
+                </geometry>
+                <material name="Black">
+                    <color rgba="0.1 0.1 0.1 1.0"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://rham_description/meshes/laser_link.STL" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="laser_link_jt" type="fixed">
+            <origin xyz="-0.00010752 0 0.0976" rpy="0 0 0" />
+            <parent link="basefoot_link" />
+            <child link="laser_link" />
+            <axis xyz="0 0 0" />
+        </joint>
+    </xacro:macro>
+</robot>

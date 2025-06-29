@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="rham_bot">
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/rham_bot</robotNamespace>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="basefoot_link">
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+  <gazebo reference="left_motor_link">
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+  <gazebo reference="right_motor_link">
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+  <gazebo reference="caster_link">
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+  <gazebo reference="laser_link">
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+
+  <link name="basefoot_link">
+    <inertial>
+      <origin xyz="-0.0144145743589182 -0.000274313076569756 0.0386925952322384" rpy="0 0 0" />
+      <mass value="0.286709642035174" />
+      <inertia ixx="0.000455635294970899" ixy="4.80014762382226E-06" ixz="2.06034221124651E-21" iyy="0.000503838101926631" iyz="-2.44158544404845E-21" izz="0.000949529356246916" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://rham_description/meshes/basefoot_link.STL" />
+      </geometry>
+      <material name="brightyellow">
+        <color rgba="1.0 0.9921568627450981 0.00392156862745098 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://rham_description/meshes/basefoot_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_motor_link">
+    <inertial>
+      <origin xyz="-6.93889390390723E-18 -0.013634747706422 0" rpy="0 0 0" />
+      <mass value="0.0986208765814908" />
+      <inertia ixx="3.46254938837746E-05" ixy="8.08369757275774E-23" ixz="4.95401915443896E-22" iyy="5.66785600544717E-05" iyz="9.10504727518394E-22" izz="3.46254938837746E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://rham_description/meshes/left_motor_link.STL" />
+      </geometry>
+      <material name="Green">
+        <color rgba="0.0 0.8 0.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://rham_description/meshes/left_motor_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_motor_link_jt" type="continuous">
+    <origin xyz="-0.051108 0.117 0.016" rpy="0 0 0" />
+    <parent link="basefoot_link" />
+    <child link="left_motor_link" />
+    <axis xyz="0 1 0" />
+  </joint>
+  <link name="right_motor_link">
+    <inertial>
+      <origin xyz="6.93889390390723E-18 0.013634747706422 0" rpy="0 0 0" />
+      <mass value="0.0986208765814908" />
+      <inertia ixx="3.46254938837746E-05" ixy="-9.29432687482328E-22" ixz="2.27226756606387E-22" iyy="5.66785600544717E-05" iyz="4.98729854505524E-23" izz="3.46254938837746E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://rham_description/meshes/right_motor_link.STL" />
+      </geometry>
+      <material name="Green">
+        <color rgba="0.0 0.8 0.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://rham_description/meshes/right_motor_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_motor_link_jt" type="continuous">
+    <origin xyz="-0.051108 -0.117 0.016" rpy="0 0 0" />
+    <parent link="basefoot_link" />
+    <child link="right_motor_link" />
+    <axis xyz="0 1 0" />
+  </joint>
+  <link name="laser_link">
+    <inertial>
+      <origin xyz="0.00149239831069729 0.000430205916664227 -0.0174246639655813" rpy="0 0 0" />
+      <mass value="0.129722713096946" />
+      <inertia ixx="4.39659525903753E-05" ixy="-1.12117402106385E-06" ixz="-1.45144638008786E-07" iyy="5.34581954301131E-05" iyz="-1.57444487872166E-07" izz="8.85145581368939E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://rham_description/meshes/laser_link.STL" />
+      </geometry>
+      <material name="Black">
+        <color rgba="0.1 0.1 0.1 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://rham_description/meshes/laser_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="laser_link_jt" type="fixed">
+    <origin xyz="-0.00010752 0 0.0976" rpy="0 0 0" />
+    <parent link="basefoot_link" />
+    <child link="laser_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="caster_link">
+    <inertial>
+      <origin xyz="0 -6.93889390390723E-18 0.00482774636510501" rpy="0 0 0" />
+      <mass value="0.00218772658414359" />
+      <inertia ixx="6.00363809142504E-08" ixy="-1.83934595193676E-25" ixz="-2.43174756024737E-24" iyy="6.00363809142504E-08" iyz="-1.24236334383657E-25" izz="5.71322676874058E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://rham_description/meshes/caster_link.STL" />
+      </geometry>
+      <material name="Green">
+        <color rgba="0.0 0.8 0.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://rham_description/meshes/caster_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="caster_link_jt" type="continuous">
+    <origin xyz="0.054892 0 -0.01425" rpy="0 0 0" />
+    <parent link="basefoot_link" />
+    <child link="caster_link" />
+    <axis xyz="0 0 1" />
+  </joint>
+</robot>

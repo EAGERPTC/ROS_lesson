@@ -1,0 +1,8 @@
+prefix=/home/skr/ROS_lesson/devel
+
+Name: rham_description
+Description: Description of rham_description
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

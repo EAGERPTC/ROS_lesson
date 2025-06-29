@@ -1,0 +1,8 @@
+prefix=/home/skr/ROS_lesson/install
+
+Name: rham_steering_control
+Description: Description of rham_steering_control
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

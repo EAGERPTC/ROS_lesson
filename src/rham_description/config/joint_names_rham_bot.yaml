@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'left_motor_link_jt', 'right_motor_link_jt', 'caster_link_jt', ]

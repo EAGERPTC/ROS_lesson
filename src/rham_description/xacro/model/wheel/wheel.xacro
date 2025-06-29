@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="wheel">
+
+        <link name="left_motor_link">
+            <inertial>
+                <origin xyz="-6.93889390390723E-18 -0.013634747706422 0" rpy="0 0 0" />
+                <mass value="0.0986208765814908" />
+                <inertia ixx="3.46254938837746E-05" ixy="8.08369757275774E-23" ixz="4.95401915443896E-22" iyy="5.66785600544717E-05" iyz="9.10504727518394E-22" izz="3.46254938837746E-05" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://rham_description/meshes/left_motor_link.STL" />
+                </geometry>
+                <material name="Green">
+                    <color rgba="0.0 0.8 0.0 1.0"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://rham_description/meshes/left_motor_link.STL" />
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="left_motor_link_jt" type="continuous">
+            <origin xyz="-0.051108 0.117 0.016" rpy="0 0 0" />
+            <parent link="basefoot_link" />
+            <child link="left_motor_link" />
+            <axis xyz="0 1 0" />
+        </joint>
+
+        <link name="right_motor_link">
+            <inertial>
+                <origin xyz="6.93889390390723E-18 0.013634747706422 0" rpy="0 0 0" />
+                <mass value="0.0986208765814908" />
+                <inertia ixx="3.46254938837746E-05" ixy="-9.29432687482328E-22" ixz="2.27226756606387E-22" iyy="5.66785600544717E-05" iyz="4.98729854505524E-23" izz="3.46254938837746E-05" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://rham_description/meshes/right_motor_link.STL" />
+                </geometry>
+                <material name="Green">
+                    <color rgba="0.0 0.8 0.0 1.0"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://rham_description/meshes/right_motor_link.STL" />
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="right_motor_link_jt" type="continuous">
+            <origin xyz="-0.051108 -0.117 0.016" rpy="0 0 0" />
+            <parent link="basefoot_link" />
+            <child link="right_motor_link" />
+            <axis xyz="0 1 0" />
+        </joint>
+
+            <link name="caster_link">
+                <inertial>
+                    <origin xyz="0 -6.93889390390723E-18 0.00482774636510501" rpy="0 0 0" />
+                    <mass value="0.00218772658414359" />
+                    <inertia ixx="6.00363809142504E-08" ixy="-1.83934595193676E-25" ixz="-2.43174756024737E-24" iyy="6.00363809142504E-08" iyz="-1.24236334383657E-25" izz="5.71322676874058E-08" />
+                </inertial>
+                <visual>
+                    <origin xyz="0 0 0" rpy="0 0 0" />
+                    <geometry>
+                        <mesh filename="package://rham_description/meshes/caster_link.STL" />
+                    </geometry>
+                    <material name="Green">
+                        <color rgba="0.0 0.8 0.0 1.0"/>
+                    </material>
+                </visual>
+                <collision>
+                    <origin xyz="0 0 0" rpy="0 0 0" />
+                    <geometry>
+                        <mesh filename="package://rham_description/meshes/caster_link.STL" />
+                    </geometry>
+                </collision>
+            </link>
+
+            <joint name="caster_link_jt" type="continuous">
+                <origin xyz="0.054892 0 -0.01425" rpy="0 0 0" />
+                <parent link="basefoot_link" />
+                <child link="caster_link" />
+                <axis xyz="0 0 1" />
+            </joint>
+
+        </xacro:macro>
+
+    </robot>
