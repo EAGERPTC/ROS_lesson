@@ -1,13 +1,15 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
+
 <launch>
-  <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+
+  <!-- Launch arguments -->
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
 
-  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <!-- Gazebo world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find rham_description)/worlds/empty.world"/>
     <arg name="debug" value="$(arg debug)" />
@@ -17,11 +19,14 @@
     <arg name="headless" value="$(arg headless)"/>
   </include>
 
-  <!-- Load the URDF into the ROS Parameter Server -->
-  <param name="rham_bot/robot_description" command="$(find xacro)/xacro --inorder '$(find rham_description)/urdf/rham_bot.urdf'" />
+  <!-- Load URDF into parameter server (must be named robot_description) -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find rham_description)/urdf/rham_bot.urdf'" />
 
+  <!-- Robot State Publisher (publish TFs from URDF) -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" />
 
-  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model rham_bot -z 0.021 -param /rham_bot/robot_description"/>
+  <!-- Spawn robot model in Gazebo -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-urdf -model rham_bot -z 0.021 -param robot_description"/>
 
 </launch>

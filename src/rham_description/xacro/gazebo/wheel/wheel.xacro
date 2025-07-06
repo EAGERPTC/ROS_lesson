@@ -17,8 +17,8 @@
         </gazebo>
 
         <gazebo reference="caster_link">
-            <mu1>1.5</mu1>
-            <mu2>1.5</mu2>
+            <mu1>0.001</mu1>
+            <mu2>0.001</mu2>
             <selfCollide>true</selfCollide>
             <material>Gazebo/Green</material>
         </gazebo>

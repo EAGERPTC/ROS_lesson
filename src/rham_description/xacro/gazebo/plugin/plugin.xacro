@@ -9,5 +9,30 @@
             </plugin>
         </gazebo>
 
+        <gazebo>
+            <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+                <!-- info -->
+                <leftJoint>left_motor_link_jt</leftJoint>
+                <rightJoint>right_motor_link_jt</rightJoint>
+                <wheelSeparation>0.234</wheelSeparation>
+                <wheelDiameter>0.065</wheelDiameter>
+
+                <!-- speed -->
+                <wheelAcceleration>1.0</wheelAcceleration>
+                <max_wheel_acceleration>10.0</max_wheel_acceleration>
+                <wheelTorque>3</wheelTorque>
+
+                <!-- node -->
+                <commandTopic>cmd_vel</commandTopic>
+                <odometryTopic>odom</odometryTopic>
+                <odometryFrame>odom</odometryFrame>
+                <publishOdom>true</publishOdom>
+                <robotBaseFrame>basefoot_link</robotBaseFrame>
+                <odometrySource>1</odometrySource>
+                <publishWheelTF>true</publishWheelTF>
+                <publishWheelJointState>true</publishWheelJointState>
+            </plugin>
+        </gazebo>
+
     </xacro:macro>
 </robot>
